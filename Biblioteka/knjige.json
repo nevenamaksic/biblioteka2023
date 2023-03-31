@@ -1,0 +1,34 @@
+[
+  {
+    "naslov": "Zivot Nene Maksic",
+    "isbn": 1,
+    "autori": [
+      {
+        "ime": "Nevena",
+        "prezime": "Maksic"
+      },
+      {
+        "ime": "Miljana",
+        "prezime": "Jovic"
+      }
+    ],
+    "izdavac": "Vulkan",
+    "izdanje": 2
+  },
+  {
+    "naslov": "Osnove programskog jezika C",
+    "isbn": 2,
+    "autori": [
+      {
+        "ime": "Nevena",
+        "prezime": "Maksic"
+      },
+      {
+        "ime": "Miljana",
+        "prezime": "Jovic"
+      }
+    ],
+    "izdavac": "Mikro knjiga",
+    "izdanje": 2
+  }
+]
