@@ -1,14 +1,21 @@
 package biblioteka;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import biblioteka.Knjiga;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import biblioteka.interfejs.BibliotekaInterfejs;
 
 public class Biblioteka implements BibliotekaInterfejs {
 
 	private List<Knjiga> knjige = new ArrayList<Knjiga>();
-
+	
+	
 	@Override
 	public void dodajKnjigu(Knjiga knjiga) {
 		if (knjiga == null)
@@ -43,6 +50,15 @@ public class Biblioteka implements BibliotekaInterfejs {
 					rezultati.add(k);
 
 		return rezultati;
+	}
+
+	@Override
+	public void upisUJsonFormatu(String putanja) throws IOException {
+			try (FileWriter out = new FileWriter(putanja)) {
+				Gson gson = new GsonBuilder().setPrettyPrinting().create();
+				out.write(gson.toJson(knjige));
+			}
+
 	}
 
 }
