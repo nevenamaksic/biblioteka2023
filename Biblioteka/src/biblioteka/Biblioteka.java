@@ -1,8 +1,10 @@
 package biblioteka;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -59,6 +61,28 @@ public class Biblioteka implements BibliotekaInterfejs {
 				out.write(gson.toJson(knjige));
 			}
 
+	}
+
+	@Override
+	public void ucitajJsonFormatUBiblioteku(String putanja) throws IOException {
+		try (FileReader in = new FileReader(putanja)) {
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+			List<Knjiga> noveKnjige = Arrays.asList(gson.fromJson(in, Knjiga[].class));
+			
+			for (Knjiga knjiga : noveKnjige) {
+				if(knjige.contains(knjiga)) {
+					continue;
+				}
+				else {
+					knjige.add(knjiga);
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

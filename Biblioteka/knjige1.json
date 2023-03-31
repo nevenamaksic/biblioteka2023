@@ -1,0 +1,78 @@
+[
+  {
+    "naslov": "Zivot Nene Maksic",
+    "isbn": 1,
+    "autori": [
+      {
+        "ime": "Nevena",
+        "prezime": "Maksic"
+      },
+      {
+        "ime": "Miljana",
+        "prezime": "Jovic"
+      }
+    ],
+    "izdavac": "Vulkan",
+    "izdanje": 2
+  },
+  {
+    "naslov": "Osnove programskog jezika C",
+    "isbn": 2,
+    "autori": [
+      {
+        "ime": "Nevena",
+        "prezime": "Maksic"
+      },
+      {
+        "ime": "Miljana",
+        "prezime": "Jovic"
+      }
+    ],
+    "izdavac": "Mikro knjiga",
+    "izdanje": 2
+  },
+  {
+    "naslov": "Na drini Cuprija",
+    "isbn": 3,
+    "autori": [
+      {
+        "ime": "Ivo",
+        "prezime": "Andric"
+      }
+    ],
+    "izdavac": "Laguna",
+    "izdanje": 3
+  },
+  {
+    "naslov": "Osnove programskog jezika Java",
+    "isbn": 4,
+    "autori": [
+      {
+        "ime": "Nevena",
+        "prezime": "Maksic"
+      },
+      {
+        "ime": "Miljana",
+        "prezime": "Jovic"
+      }
+    ],
+    "izdavac": "Mikro knjiga",
+    "izdanje": 1
+  },
+  {
+    "naslov": "Osnove programskog jezika Java",
+    "isbn": 4,
+    "autori": [
+      {
+        "ime": "Nevena",
+        "prezime": "Maksic"
+      },
+      {
+        "ime": "Miljana",
+        "prezime": "Jovic"
+      }
+    ],
+    "izdavac": "Mikro knjiga",
+    "izdanje": 1
+  }
+]
