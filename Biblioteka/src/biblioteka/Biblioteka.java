@@ -1,10 +1,12 @@
 package biblioteka;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -14,8 +16,7 @@ import biblioteka.interfejs.BibliotekaInterfejs;
 public class Biblioteka implements BibliotekaInterfejs {
 
 	private List<Knjiga> knjige = new ArrayList<Knjiga>();
-	
-	
+
 	@Override
 	public void dodajKnjigu(Knjiga knjiga) {
 		if (knjiga == null)
@@ -54,10 +55,53 @@ public class Biblioteka implements BibliotekaInterfejs {
 
 	@Override
 	public void upisUJsonFormatu(String putanja) throws IOException {
-			try (FileWriter out = new FileWriter(putanja)) {
-				Gson gson = new GsonBuilder().setPrettyPrinting().create();
-				out.write(gson.toJson(knjige));
+		try (FileWriter out = new FileWriter(putanja)) {
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			out.write(gson.toJson(knjige));
+		}
+
+	}
+
+	@Override
+	public void ucitajJsonFormatUBiblioteku(String putanja) throws IOException {
+		try (FileReader in = new FileReader(putanja)) {
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+			List<Knjiga> noveKnjige = Arrays.asList(gson.fromJson(in, Knjiga[].class));
+
+			for (Knjiga knjiga : noveKnjige) {
+				if (knjige.contains(knjiga)) {
+					continue;
+				} else {
+					knjige.add(knjiga);
+				}
 			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	public void pronadjiKnjigu(Autor autor, long isbn, String naslov, String izdavac, String putanja) {
+		if (autor == null && isbn < 0 && naslov == null && izdavac == null)
+			throw new IllegalArgumentException("Morate uneti bar neki kriterijum za pretragu");
+
+		List<Knjiga> rezultati = new ArrayList<Knjiga>();
+
+		if (naslov != null)
+			for (Knjiga k : knjige)
+				if (k.getNaslov().toLowerCase().contains(naslov.toLowerCase().trim()))
+					rezultati.add(k);
+
+		try (PrintWriter out = new PrintWriter(new FileWriter(putanja))) {
+			Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
+
+			out.write(gson.toJson(rezultati));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
